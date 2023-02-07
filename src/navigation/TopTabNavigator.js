@@ -83,7 +83,7 @@ const TopTabNavigator = () => {
           headerShown: false,
           // tabBarLabel: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <FastImage
+            <Image
               style={{
                 height: 20,
                 width: 20,
@@ -134,7 +134,7 @@ const TopTabNavigator = () => {
         ),
 
         tabBarIcon: ({color, focused}) => (
-          <FastImage
+          <Image
             style={{
               height: 20,
               width: 20,

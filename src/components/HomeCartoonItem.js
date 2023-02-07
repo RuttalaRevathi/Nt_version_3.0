@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Alert, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, Text, TouchableOpacity, View, Image} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 import {commonstyles} from '../styles/commonstyles';
@@ -16,13 +16,12 @@ class HomeCartoonItem extends React.PureComponent {
                 item: this.props.item,
                 detailsData: this.props.cartoonData?.data,
               });
-              //Alert.alert(this.props.item.title.rendered);
             }}>
-            <FastImage
+            <Image
               source={{uri: this.props.item?.web_featured_image}}
-              style={commonstyles.cartoonimg}
+              style={commonstyles.Homecartoonimg}
             />
-            <View>
+            <View style={{marginLeft: 15, marginBottom: 3}}>
               <Text
                 numberOfLines={2}
                 ellipsizeMode="tail"

@@ -39,7 +39,7 @@ const DrawerNavigator = (navigation) => {
             <View style={HeaderStyle.HeadRightView}>
               <TouchableOpacity
               >
-                <FastImage
+                <Image
                   style={HeaderStyle.HeadRightImg}
                   source={require('../Assets/Images/bell.png')}
                 />
@@ -52,7 +52,7 @@ const DrawerNavigator = (navigation) => {
                 onPress={() => {
                   navigation.toggleDrawer();
                 }}>
-                <FastImage
+                <Image
                   style={HeaderStyle.headerLeftImg}
                   source={require('../Assets/Images/menu.png')}
                 />
@@ -61,7 +61,7 @@ const DrawerNavigator = (navigation) => {
           ),
           headerTitle: () => (
             <View style={HeaderStyle.HeadTitleView}>
-              <FastImage
+              <Image
                 style={HeaderStyle.HeadTitleImg}
                 source={require('../Assets/Images/logo.png')}
               />

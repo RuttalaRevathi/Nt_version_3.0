@@ -149,10 +149,7 @@ const Home = ({
   );
   const dispatch = useDispatch();
   const [totalLoading, setTotalLoading] = useState(false);
-  // console.log(
-  //   'slider data=============================================>',
-  //   JSON.stringify(sliderData),
-  // );
+
   const carouselItem = ({ item, index }) => (
     <HomeCarouselItem
       item={item}
@@ -265,8 +262,8 @@ const Home = ({
           <View>
             <View>
               <FlatList
-                style={[commonstyles.bgDarkGrey]}
-                data={cartoonData?.data}
+                // style={[commonstyles.bgDarkGrey]}
+                data={cartoonData?.data?.slice(0,1)}
                 showsHorizontalScrollIndicator={true}
                 horizontal={true}
                 renderItem={cartoonItem}

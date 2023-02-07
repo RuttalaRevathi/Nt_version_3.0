@@ -15,11 +15,18 @@ class HomeCarouselItem extends React.PureComponent {
             detailsData: this.props.propsdata,
           });
         }}>
-        <View style={commonstyles.sliderView}>
+        <View style={{}}>
           <FastImage
             source={{uri: this.props.item?.web_featured_image}}
             style={commonstyles.slidercard}
           />
+          <LinearGradient
+            colors={['rgba(0,0,0,0)', 'rgba(0,0,0,.8)', 'rgba(0,0,0,1)']}
+            style={commonstyles.sliderGradient}>
+            <Text style={commonstyles.slidertext}>
+              {this.props.item?.title?.rendered}
+            </Text>
+          </LinearGradient>
           <View
             style={{
               position: 'absolute',
@@ -37,13 +44,6 @@ class HomeCarouselItem extends React.PureComponent {
               {this.props.index + 1}/{this.props.propsdata.length}
             </Text>
           </View>
-          <LinearGradient
-            colors={['rgba(0,0,0,0)', 'rgba(0,0,0,.8)', 'rgba(0,0,0,1)']}
-            style={commonstyles.sliderGradient}>
-            <Text style={commonstyles.slidertext}>
-              {this.props.item?.title?.rendered}
-            </Text>
-          </LinearGradient>
         </View>
       </TouchableOpacity>
     );

@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Image,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
@@ -34,7 +35,7 @@ class HomeVideosgalleryItem extends React.PureComponent {
                   alignSelf: 'center',
                   marginVertical: 100,
                 }}>
-                <FastImage
+                <Image
                   style={{width: 30, height: 20}}
                   source={require('../Assets/Images/videoicon.png')}
                 />

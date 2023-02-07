@@ -64,7 +64,7 @@ const PhotoGallery = ({
                       <View style={commonstyles.latestMainView}>
                         <View style={commonstyles.latestsubView}>
                           <View>
-                            <FastImage 
+                            <Image 
                               style={commonstyles.latestimgTag}
                               source={{uri: item.web_featured_image}}
                             />

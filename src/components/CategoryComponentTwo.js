@@ -4,7 +4,8 @@ import {Alert, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-nati
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
-import {commonstyles, Header_text} from '../styles/commonstyles';
+import {appThemeColor, commonstyles, Header_text} from '../styles/commonstyles';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 class CategoryComponentTwo extends React.PureComponent {
   render() {
@@ -17,29 +18,17 @@ class CategoryComponentTwo extends React.PureComponent {
               detailsData: this.props.propsdata,
             });
           }}>
-          <View style={commonstyles.cardView}>
-            <View style={commonstyles.cateviewImg}>
-              <Image
-                source={{uri: this.props.item?.web_featured_image}}
-                style={commonstyles.cateImage}
-              />
-            </View>
-            {/* https://d2e1hu1ktur9ur.cloudfront.net/wp-content/uploads/2022/03/watermarklogo.jpg */}
-            <View style={commonstyles.cateviewText}>
-              <Text
-                numberOfLines={2}
-                ellipsizeMode="tail"
-                style={commonstyles.latestText}>
-                {this.props.item?.title?.rendered}
-              </Text>
-              <View style={commonstyles.timeview}>
-                <Text style={commonstyles.latesttime}>
-                  {moment(this.props.item?.date_gmt).format('DD-MMM-YYYY')} ,{' '}
-                </Text>
-                <Text style={commonstyles.latesttime}>
-                  {moment(this.props.item?.modified)
-                    .utcOffset('+05:30')
-                    .format('hh.mm a')}{' '}
+          <View style={commonstyles.HomeComp2MainView}>
+            <View style={commonstyles.HomeComp2DotView}>
+              <View style={{width: 10, marginTop: 7}}>
+                <FontAwesome name="circle" size={8} color={appThemeColor} />
+              </View>
+              <View style={{flex: 2}}>
+                <Text
+                  numberOfLines={2}
+                  ellipsizeMode="tail"
+                  style={commonstyles.HomeComp2Text}>
+                  {this.props.item?.title?.rendered}
                 </Text>
               </View>
             </View>

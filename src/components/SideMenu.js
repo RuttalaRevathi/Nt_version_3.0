@@ -49,7 +49,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/topnews.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -64,7 +64,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/horoscope.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -78,7 +78,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/horoscope.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -93,7 +93,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/cartoon.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -108,7 +108,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/health.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -123,7 +123,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/hyderabad.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -138,7 +138,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/telangana.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -153,7 +153,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/ap.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -167,7 +167,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/national.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -181,7 +181,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/international.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -195,7 +195,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/sports.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -209,7 +209,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/business.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -223,7 +223,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/nri.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -237,7 +237,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/photos.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -251,7 +251,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/video.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -265,7 +265,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/editpage.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -279,7 +279,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/zindagi.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -293,7 +293,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/bathukamma.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -308,7 +308,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/agriculture.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -323,7 +323,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/cooking.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -338,7 +338,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/vaasthu.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -353,7 +353,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/sidemenuIcons/more.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -494,7 +494,7 @@ export default class SideMenu extends Component {
                         <DrawerItem
                             style={sideMenuStyle.item}
                             icon={({ color, size }) => (
-                                <FastImage
+                                <Image
                                     source={require('../Assets/Images/paper.png')}
                                     style={sideMenuStyle.icon}
                                 />
@@ -507,7 +507,7 @@ export default class SideMenu extends Component {
                         />
                         <DrawerItem style={sideMenuStyle.item}
                             icon={({ color, size }) =>
-                                <FastImage source={require('../Assets/Images/sidemenuIcons/contact.png')} style={sideMenuStyle.icon} />
+                                <Image source={require('../Assets/Images/sidemenuIcons/contact.png')} style={sideMenuStyle.icon} />
                             }
                             label="Contact Us"
                             labelStyle={sideMenuStyle.text}
@@ -517,7 +517,7 @@ export default class SideMenu extends Component {
                         />
                         <DrawerItem style={sideMenuStyle.item}
                             icon={({ color, size }) =>
-                                <FastImage source={require('../Assets/Images/sidemenuIcons/about.png')} style={sideMenuStyle.icon} />
+                                <Image source={require('../Assets/Images/sidemenuIcons/about.png')} style={sideMenuStyle.icon} />
                             }
                             label="About Us"
                             labelStyle={sideMenuStyle.text}
@@ -527,7 +527,7 @@ export default class SideMenu extends Component {
                         />
                         <DrawerItem style={sideMenuStyle.item}
                             icon={({ color, size }) =>
-                                <FastImage source={require('../Assets/Images/sidemenuIcons/privacy.png')} style={sideMenuStyle.icon} />
+                                <Image source={require('../Assets/Images/sidemenuIcons/privacy.png')} style={sideMenuStyle.icon} />
                             }
                             label="Privacy Policy"
                             labelStyle={sideMenuStyle.text}
@@ -538,7 +538,7 @@ export default class SideMenu extends Component {
                        
                         <DrawerItem style={[sideMenuStyle.item]}
                             icon={({ color, size }) =>
-                                <FastImage source={require('../Assets/Images/sidemenuIcons/conditions.png')} style={sideMenuStyle.icon} />
+                                <Image source={require('../Assets/Images/sidemenuIcons/conditions.png')} style={sideMenuStyle.icon} />
                             }
                            
                             label="Terms and Conditions"

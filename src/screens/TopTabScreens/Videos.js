@@ -49,6 +49,7 @@ const Videos = ({
                     <View>
                         <FlatList
                             style={commonstyles.cateflist}
+
                             data={videosData?.data}
                             numColumns={2}
                             renderItem={({ item, index }) =>
@@ -64,11 +65,11 @@ const Videos = ({
                                             <View style={commonstyles.latestMainView}>
                                                 <View style={commonstyles.latestsubView}>
                                                     <View>
-                                                        <FastImage  style={commonstyles.latestimgTag} source={{ uri: item?.web_featured_image }} />
+                                                        <Image  style={commonstyles.latestimgTag} source={{ uri: item?.web_featured_image }} />
                                                     </View>
                                                     <View>
                                                         <View style={{ backgroundColor: 'red', padding: 5, bottom: 55, left: 0, position: 'absolute' }}>
-                                                            <FastImage  style={{ height: 15, width: 25, borderRadius: 10 }}
+                                                            <Image  style={{ height: 15, width: 25, borderRadius: 10 }}
                                                                 source={require('../../Assets/Images/videoicon.png')} />
                                                         </View>
                                                         <Text numberOfLines={2} ellipsizeMode="tail"

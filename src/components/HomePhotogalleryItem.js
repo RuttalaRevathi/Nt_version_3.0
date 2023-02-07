@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Alert, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, Text, TouchableOpacity, View, Image} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 import {commonstyles} from '../styles/commonstyles';
@@ -17,7 +17,7 @@ class HomePhotogalleryItem extends React.PureComponent {
             });
           }}>
           <View style={commonstyles.sliderView}>
-            <FastImage
+            <Image
               source={{uri: this.props.item?.web_featured_image}}
               style={commonstyles.photocard}
             />

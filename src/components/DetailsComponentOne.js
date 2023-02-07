@@ -1,6 +1,7 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Alert, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, Text, TouchableOpacity, View, Image} from 'react-native';
 import moment from 'moment';
 import FastImage from 'react-native-fast-image';
 import {commonstyles} from '../styles/commonstyles';
@@ -28,9 +29,9 @@ class DetailsComponentOne extends React.PureComponent {
           }}>
           <View style={commonstyles.cardViewHome}>
             <View style={commonstyles.cateviewImg}>
-              <FastImage
+              <Image
                 source={{
-                  uri: this.props?.item?.web_featured_image
+                  uri: this.props?.item?.web_featured_image,
                 }}
                 style={commonstyles.cateImage}
               />
