@@ -4,9 +4,10 @@ import { StyleSheet, Dimensions } from 'react-native';
 // export const appThemeColor = "#337DFF"
 //3349FF,339fff
 export const appThemeColor = '#262A85';
-export const whitecolor = '#FFFFFF';
+export const whitecolor = '#fff';
 export const graycolor = '#e4e3e3';
 export const Dark_graycolor = '#63666A';
+export const medium_gray = '#D3D3D3';
 export const blackcolor = '#000';
 // export const gallerycolor = "#FFC300"
 export const gallerycolor = '#696AAA';
@@ -32,6 +33,7 @@ export const ITEM_WIDTH = Math.round(SLIDER_WIDTH);
 
 export const commonstyles = StyleSheet.create({
   // new styles
+  scroll: { backgroundColor: whitecolor },
   TextView: {
     flexDirection: 'row', flex: 2,
     fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, justifyContent: 'center',
@@ -49,20 +51,20 @@ export const commonstyles = StyleSheet.create({
     borderBottomRightRadius: 15,
     position: 'absolute', height: 100,
   },
-  HomeComp2DotView:{
+  HomeComp2DotView: {
     flexDirection: 'row',
     alignItems: 'flex-start',
     flexWrap: 'wrap',
     flex: 1,
     margin: 5,
-    borderBottomColor: graycolor,
-    borderBottomWidth: 1,
+    borderBottomColor: medium_gray,
+    borderBottomWidth: 1.5,
   },
-  HomeComp2MainView:{
+  HomeComp2MainView: {
     flexDirection: 'column',
     alignItems: 'flex-start',
   },
-  HomeComp2Text:{
+  HomeComp2Text: {
     color: blackcolor,
     fontFamily: 'Mandali-Bold',
     fontSize: 18,
@@ -74,6 +76,16 @@ export const commonstyles = StyleSheet.create({
     width: Dimensions.get('window').height * 0.40,
     borderRadius: 10, resizeMode: 'contain', margin: 5,
     aspectRatio: 3 / 4,
+  },
+  HomePhotoimgOne: {
+    width: Dimensions.get('window').height * 0.40,
+    borderRadius: 10, resizeMode: 'contain', margin: 5,
+    height: Dimensions.get('window').height - 500,
+  },
+  HomePhotoimgTwo: {
+    width: Dimensions.get('window').height * 0.20,
+    borderRadius: 10, resizeMode: 'contain', margin: 5,
+    aspectRatio: 3 / 3,
   },
   //
   container: {
@@ -117,7 +129,14 @@ export const commonstyles = StyleSheet.create({
     borderLeftColor: shadow_color, borderLeftWidth: 1,
     borderRightColor: shadow_color, borderRightWidth: 1,
   },
-  latestimgTag: { width: '100%', height: 100, borderTopLeftRadius: 5, borderTopRightRadius: 5, borderRightColor: shadow_color, borderRightWidth: 1 },
+  latestimgTag: {
+    width: '100%',
+    height: 100,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
+    borderRightColor: shadow_color,
+    borderRightWidth: 1,
+  },
   latestTxtTag: {
     color: blackcolor, fontFamily: 'Mandali-Regular',
     fontSize: 16, lineHeight: 25, left: 5, right: 2, paddingRight: 20,
@@ -190,9 +209,7 @@ export const commonstyles = StyleSheet.create({
   phototext: {
     color: blackcolor,
     fontFamily: 'Mandali-Bold',
-    // fontWeight:'bold',
     fontSize: 22,
-    // marginBottom: 5,
     marginLeft: 10,
     marginRight: 10,
     lineHeight: 29,
@@ -405,6 +422,7 @@ export const commonstyles = StyleSheet.create({
     height: 230,
     margin: 10,
     borderRadius: 10,
+    resizeMode:'contain',
   },
   detailTime: {
     color: TimeStamp,

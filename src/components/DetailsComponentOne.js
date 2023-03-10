@@ -10,17 +10,6 @@ class DetailsComponentOne extends React.PureComponent {
   render() {
     return (
       <View>
-        {/* <TouchableOpacity
-          onPress={() => {
-            Alert.alert('bvscscsdhgsdhfgsdhfghdsfhds');
-          }}>
-          <Text
-            numberOfLines={2}
-            ellipsizeMode="tail"
-            style={commonstyles.latestText}>
-            hjsgfhdsgfhgdshfgdshgfhsd
-          </Text>
-        </TouchableOpacity> */}
         <TouchableOpacity
           onPress={() => {
             this.props.navigation.navigate('Details', {

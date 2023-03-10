@@ -44,7 +44,7 @@ const PhotoGallery = ({
           alert('BookMark   Clicked');
         }}
       />
-      <ScrollView>
+      <ScrollView style={commonstyles.scroll}>
         <View>
         {photosData?.data?.length !== 0 ?
           <View>
@@ -66,7 +66,7 @@ const PhotoGallery = ({
                           <View>
                             <Image 
                               style={commonstyles.latestimgTag}
-                              source={{uri: item.web_featured_image}}
+                              source={{uri: item?.web_featured_image}}
                             />
                           </View>
                           <View>

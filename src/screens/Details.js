@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useRef, useState } from 'react';
@@ -33,11 +34,12 @@ const Details = ({ navigation, relatedData, relatedLoading,
   const dispatch = useDispatch();
   const [detailsData, setDetailsData] = useState([]);
   // const [autiHeightData,setAutiHeightData] =useState();
-
+  console.log(route?.params?.item?.id, '======================>id in details screen');
+ 
   useEffect(() => {
     dispatch(getRelatedAction(route?.params?.item?.id));
     setDetailsData(route?.params?.detailsData);
-    dispatch(getArticleDetailAction())
+    dispatch(getArticleDetailAction());
   }, []);
 
   useEffect(() => {
@@ -47,47 +49,41 @@ const Details = ({ navigation, relatedData, relatedLoading,
 
   const goToTop = () => {
     Scrollref.current.scrollTo({ x: 0, y: 0, animated: true });
-  }
+  };
   const getIndex = () => {
     var index = detailsData.findIndex(
-      x => x.id == route?.params?.item?.id,
+      x => x.id === route?.params?.item?.id,
     );
     return index + 1;
   };
-
-  // const source1 = source.replace(
-  //   'lazyload',
-  //   'text/javascript',
-  // );
-
-  const source = route?.params?.item?.content?.rendered;
+   const source = route?.params?.item?.content?.rendered;
   var source1 = source?.replace('lazyload', 'text/javascript');
-  const renderItemOne = ({item}) => (
+  const renderItemOne = ({ item }) => (
     <DetailsComponentOne
-         item={item}
-         propsdata={relatedData?.data}
-         navigation={ navigation}
+      item={item}
+      propsdata={relatedData?.data}
+      navigation={navigation}
 
     />
   );
-  const renderItemTwo = ({item}) => (
+  const renderItemTwo = ({ item }) => (
     <DetailsComponentTwo
-         item={item}
-         propsdata={relatedData?.data}
-         navigation={ navigation}
+      item={item}
+      propsdata={relatedData?.data}
+      navigation={navigation}
 
     />
   );
-  const renderItemThree = ({item}) => (
+  const renderItemThree = ({ item }) => (
     <DetailsComponentThree
-         item={item}
-         propsdata={relatedData?.data}
-         navigation={ navigation}
+      item={item}
+      propsdata={relatedData?.data}
+      navigation={navigation}
 
     />
   );
 
-  
+
   return (
     <View style={commonstyles.container}>
       <View>
@@ -176,7 +172,7 @@ const Details = ({ navigation, relatedData, relatedLoading,
             />
           </View>
 
-          <View style={{ margin: 10 }}>
+          <View style={{ margin: 10, }}>
             <HTMLView
               value={'<p>' + route?.params?.item?.title?.rendered + '</p>'}
               stylesheet={headerStyles}
@@ -203,6 +199,7 @@ const Details = ({ navigation, relatedData, relatedLoading,
               pointerEvents: 'none',
               paddingLeft: 10,
             }}>
+              {/* <Text>{source1}</Text> */}
             <AutoHeightWebView style={{ width: Dimensions.get('window').width - 15, marginTop: 35 }}
               customStyle={`
               * {
@@ -231,6 +228,12 @@ const Details = ({ navigation, relatedData, relatedLoading,
                                                 width:100%;
                                                 height:inherit
                                               }
+                                              p strong{
+                                                color:#262A85 !importent
+                                              }
+                                              h2 span{
+                                                color:#262A85 !importent
+                                              }
                                              
             `}
               source={{
@@ -243,7 +246,7 @@ const Details = ({ navigation, relatedData, relatedLoading,
 
             />
           </View>
-
+         
           {/* Related News */}
           <View>
             <View style={{ marginLeft: 10, marginTop: 10 }}>

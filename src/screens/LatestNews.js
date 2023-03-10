@@ -59,7 +59,7 @@ const LatestNews = ({
           alert('BookMark   Clicked');
         }}
       />
-      <ScrollView>
+      <ScrollView style={commonstyles.scroll}>
         <View>
           <View style={{ position: 'relative' }}>
             <FlatList

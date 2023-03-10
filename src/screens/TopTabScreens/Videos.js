@@ -30,7 +30,7 @@ const Videos = ({
     }, []);
     // share function
     return (
-        <SafeAreaView styles={commonstyles.container}>
+        <SafeAreaView styles={[commonstyles.container]}>
             <SubHeader
                 title={'వీడియోలు '}
                 isMenu={false}

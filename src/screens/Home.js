@@ -24,15 +24,50 @@ import {
   commonstyles,
   ITEM_WIDTH,
   SLIDER_WIDTH,
+  whitecolor,
 } from '../styles/commonstyles';
 import LinearGradient from 'react-native-linear-gradient';
 import HomeUI from '../components/HomeUI';
+import rasiPhalaluUI from '../components/rasiPhaluUI';
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import HomeCarouselItem from '../components/HomeCarouselItem';
 import HomeCartoonItem from '../components/HomeCartoonItem';
-import HomePhotogalleryItem from '../components/HomePhotogalleryItem';
+import HomePhotogalleryItemTwo from '../components/HomePhotogalleryItemTwo';
 import HomeVideosgalleryItem from '../components/HomeVideosgalleryItem';
-
+import HomePhotogalleryItemOne from '../components/HomePhotogalleryItemOne';
+import { store } from '../redux/store';
+import getLatestNewsAction from '../redux/actions/getLatestNewsAction';
+import getCinemaAction from '../redux/actions/getCinemaAction';
+import getRasiPhalaluAction from '../redux/actions/getRasiPhalaluAction';
+import getCartoonAction from '../redux/actions/getCartoonAction';
+import getHealthAction from '../redux/actions/getHealthAction';
+import getHyderabadAction from '../redux/actions/getHyderabadAction';
+import getTelanganaAction from '../redux/actions/getTelanganaAction';
+import getApAction from '../redux/actions/getApAction';
+import getNationalAction from '../redux/actions/getNationalAction';
+import getInterNationalAction from '../redux/actions/getInterNationalAction';
+import getSportsAction from '../redux/actions/getSportsAction';
+import getBusinessAction from '../redux/actions/getBusinessAction';
+import getNriAction from '../redux/actions/getNriAction';
+import getEditPageAction from '../redux/actions/getEditPageAction';
+import getZindagiAction from '../redux/actions/getZindagiAction';
+import getBathukammaAction from '../redux/actions/getBathukammaAction';
+import getAgricultureAction from '../redux/actions/getAgricultureAction';
+import getCookingAction from '../redux/actions/getCookingAction';
+import getVaasthuAction from '../redux/actions/getVaasthuAction';
+import getVideoAction from '../redux/actions/getVideoAction';
+import getPhotoGalleryAction from '../redux/actions/getPhotoGalleryAction';
+import { getKarimnagarAction } from '../redux/actions/getKarimnagarAction';
+import { getKhammamAction } from '../redux/actions/getKhammamAction';
+import { getMahabubnagarAction } from '../redux/actions/getMahabubnagarAction';
+import { getMedakAction } from '../redux/actions/getMedakAction';
+import { getNalgondaAction } from '../redux/actions/getNalgondaAction';
+import { getNizamabadAction } from '../redux/actions/getNizamabadAction';
+import { getRangareddyAction } from '../redux/actions/getRangareddyAction';
+import { getWarangalAction } from '../redux/actions/getWarangalAction';
+import HomeRasiphalaluItemOne from '../components/HomeRasiphalaluItemOne';
+import HomeRasiphalaluItemTwo from '../components/HomeRasiphalaluItemTwo';
 const Home = ({
   navigation,
   sliderData,
@@ -149,7 +184,47 @@ const Home = ({
   );
   const dispatch = useDispatch();
   const [totalLoading, setTotalLoading] = useState(false);
+  let decode = require('html-entities-decoder');
 
+  useEffect(() => {
+    console.log(rasiPhalaluData?.data,"----------->rasi");
+    store.dispatch(getSliderAction());
+    store.dispatch(getLatestNewsAction());
+    store.dispatch(getCinemaAction());
+    store.dispatch(getRasiPhalaluAction());
+    store.dispatch(getCartoonAction());
+    store.dispatch(getHealthAction());
+    store.dispatch(getHyderabadAction());
+    store.dispatch(getTelanganaAction());
+    store.dispatch(getApAction());
+    store.dispatch(getNationalAction());
+    store.dispatch(getInterNationalAction());
+    store.dispatch(getSportsAction());
+    store.dispatch(getBusinessAction());
+    store.dispatch(getNriAction());
+    store.dispatch(getEditPageAction());
+    store.dispatch(getZindagiAction());
+    store.dispatch(getBathukammaAction());
+    store.dispatch(getAgricultureAction());
+    store.dispatch(getCookingAction());
+    store.dispatch(getVaasthuAction());
+    store.dispatch(getVideoAction());
+    store.dispatch(getPhotoGalleryAction());
+    store.dispatch(getKarimnagarAction());
+    store.dispatch(getKhammamAction());
+    store.dispatch(getMahabubnagarAction());
+    store.dispatch(getMedakAction());
+    store.dispatch(getNalgondaAction());
+    store.dispatch(getNizamabadAction());
+    store.dispatch(getRangareddyAction());
+    store.dispatch(getWarangalAction());
+    //hides the splash screen on app load.
+   
+  }, []);
+  useEffect(() => {
+    console.log(rasiPhalaluData?.data,"----------->rasi");
+   
+  }, []);
   const carouselItem = ({ item, index }) => (
     <HomeCarouselItem
       item={item}
@@ -159,6 +234,26 @@ const Home = ({
 
     />
   );
+  const rasiPhalaluItemOne = ({ item, index }) => (
+    <HomeRasiphalaluItemOne
+      item={item}
+      propsdata={rasiPhalaluData?.data}
+      navigation={navigation}
+      index={index}
+
+    />
+  );
+  const rasiPhalaluItemTwo = ({ item, index }) => (
+    <HomeRasiphalaluItemTwo
+      item={item}
+      propsdata={rasiPhalaluData?.data}
+      navigation={navigation}
+      index={index}
+
+    />
+  );
+
+
   const cartoonItem = ({ item, index }) => (
     <HomeCartoonItem
       item={item}
@@ -168,8 +263,16 @@ const Home = ({
 
     />
   );
-  const photoGalleryItem = ({ item, index }) => (
-    <HomePhotogalleryItem
+  const photoGalleryItemOne = ({ item, index }) => (
+    <HomePhotogalleryItemOne
+      item={item}
+      propsdata={photosData?.data}
+      navigation={navigation}
+      index={index}
+    />
+  );
+  const photoGalleryItemTwo = ({ item, index }) => (
+    <HomePhotogalleryItemTwo
       item={item}
       propsdata={photosData?.data}
       navigation={navigation}
@@ -188,7 +291,7 @@ const Home = ({
 
 
   return (
-    <ScrollView>
+    <ScrollView style={commonstyles.scroll}>
       <View style={{ padding: 10 }}>
         {/* Spinner */}
         <Spinner
@@ -239,12 +342,52 @@ const Home = ({
           navigation={navigation}
         />
         {/* RasiPhalalu */}
-        <HomeUI
+        {/* <HomeUI
           categoryName="రాశి ఫలాలు"
           data={rasiPhalaluData?.data}
           navigationScreen="రాశి ఫలాలు"
           navigation={navigation}
-        />
+        /> */}
+        <View style={commonstyles.categoryMview}>
+          <View style={commonstyles.categoryView}>
+            <View>
+              <Text style={commonstyles.Category}>{"రాశి ఫలాలు"}</Text>
+            </View>
+            <View style={commonstyles.dot}>
+              <FontAwesome name="circle" size={10} color={appThemeColor} />
+            </View>
+          </View>
+        </View>
+
+        <View style={commonstyles.flatView}>
+          <FlatList
+            showsHorizontalScrollIndicator={false}
+            persistentScrollbar={false}
+            data={rasiPhalaluData?.data?.slice(0, 1)}
+            onEndReachedThreshold={50}
+            getItemLayout={(data, index) => (
+              { length: 40, offset: 40 * index, index }
+            )}
+            renderItem={rasiPhalaluItemOne}
+          />
+        </View>
+        <View style={commonstyles.flatView}>
+          <FlatList
+            showsHorizontalScrollIndicator={false}
+            persistentScrollbar={false}
+            data={rasiPhalaluData?.data?.filter(obj => {
+              return obj.horoscope_type === 'weekly';
+            }).slice(0,1)}
+            onEndReachedThreshold={50}
+            getItemLayout={(data, index) => (
+              { length: 40, offset: 40 * index, index }
+            )}
+            renderItem={rasiPhalaluItemTwo}
+          />
+        </View>
+
+
+
         {/* Cartoon */}
         <View>
           {/* Cartoon   text*/}
@@ -263,7 +406,7 @@ const Home = ({
             <View>
               <FlatList
                 // style={[commonstyles.bgDarkGrey]}
-                data={cartoonData?.data?.slice(0,1)}
+                data={cartoonData?.data?.slice(0, 1)}
                 showsHorizontalScrollIndicator={true}
                 horizontal={true}
                 renderItem={cartoonItem}
@@ -358,10 +501,18 @@ const Home = ({
             <View>
               <View>
                 <FlatList
-                  data={photosData?.data}
+                  data={photosData?.data?.slice(0, 1)}
                   showsHorizontalScrollIndicator={false}
                   horizontal={true}
-                  renderItem={photoGalleryItem}
+                  renderItem={photoGalleryItemOne}
+                />
+              </View>
+              <View>
+                <FlatList persistentScrollbar
+                  data={photosData?.data?.slice(1, 10)}
+                  showsHorizontalScrollIndicator={true}
+                  horizontal={true}
+                  renderItem={photoGalleryItemTwo}
                 />
               </View>
 
@@ -456,7 +607,7 @@ const Home = ({
           navigation={navigation}
         />
       </View>
-    </ScrollView>
+    </ScrollView >
   );
 };
 

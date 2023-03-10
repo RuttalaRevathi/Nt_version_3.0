@@ -19,6 +19,7 @@ const getSliderAction = () => {
         },
       });
       const json = await result.json();
+
       if (json) {
         dispatch({
           type: GET_SLIDER_DATA_SUCCESS,

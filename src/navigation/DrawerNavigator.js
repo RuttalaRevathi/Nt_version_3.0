@@ -61,10 +61,12 @@ const DrawerNavigator = (navigation) => {
           ),
           headerTitle: () => (
             <View style={HeaderStyle.HeadTitleView}>
+              <TouchableOpacity onPress={()=>navigation.navigate('Home')}>
               <Image
                 style={HeaderStyle.HeadTitleImg}
                 source={require('../Assets/Images/logo.png')}
               />
+              </TouchableOpacity>
             </View>
           ),
         })}

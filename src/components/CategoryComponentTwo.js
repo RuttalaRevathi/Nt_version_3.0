@@ -1,6 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Alert, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Alert,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
@@ -9,6 +16,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 class CategoryComponentTwo extends React.PureComponent {
   render() {
+    let decode = require('html-entities-decoder');
     return (
       <View>
         <TouchableOpacity
@@ -28,7 +36,7 @@ class CategoryComponentTwo extends React.PureComponent {
                   numberOfLines={2}
                   ellipsizeMode="tail"
                   style={commonstyles.HomeComp2Text}>
-                  {this.props.item?.title?.rendered}
+                  {decode(this.props.item?.title?.rendered)}
                 </Text>
               </View>
             </View>

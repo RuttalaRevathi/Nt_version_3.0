@@ -17,6 +17,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 class HomeComponentTwo extends React.PureComponent {
   render() {
+    let decode = require('html-entities-decoder');
     return (
       <View>
         <TouchableOpacity
@@ -36,7 +37,7 @@ class HomeComponentTwo extends React.PureComponent {
                   numberOfLines={2}
                   ellipsizeMode="tail"
                   style={commonstyles.HomeComp2Text}>
-                  {this.props.item?.title?.rendered}
+                  {decode(this.props.item?.title?.rendered)}
                 </Text>
               </View>
             </View>

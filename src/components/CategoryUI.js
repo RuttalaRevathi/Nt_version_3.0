@@ -64,7 +64,7 @@ function CategoryUI(props, { navigation }) {
           alert('BookMark   Clicked');
         }}
       />
-      <ScrollView>
+      <ScrollView style={commonstyles.scroll}>
         <View>
           {props?.data?.length !== 0 ?
           <View style={{ position: 'relative' }}>
