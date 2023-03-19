@@ -25,7 +25,7 @@ class HomeVideosgalleryItem extends React.PureComponent {
           }}>
           <View style={commonstyles.sliderView}>
             <ImageBackground
-              imageStyle={{borderRadius: 6}}
+              imageStyle={{borderRadius: 6, resizeMode: 'contain'}}
               source={{uri: this.props.item?.web_featured_image}}
               style={commonstyles.videocard}>
               <View

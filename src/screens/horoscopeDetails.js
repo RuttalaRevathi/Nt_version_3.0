@@ -1,9 +1,10 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-unreachable */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, Linking, ScrollView, FlatList, Share, Dimensions } from 'react-native';
-import { appThemeColor, commonstyles, Header_text } from '../styles/commonstyles';
+import { appThemeColor, blackcolor, commonstyles, Header_text, medium_gray, whitecolor } from '../styles/commonstyles';
 import WebView from 'react-native-webview';
 import AutoHeightWebView from 'react-native-autoheight-webview';
 import LinearGradient from 'react-native-linear-gradient';
@@ -19,25 +20,19 @@ import HomeComponentTwo from '../components/HomeComponentTwo';
 import DetailsComponentTwo from '../components/DetailsComponentTwo';
 import DetailsComponentThree from '../components/DetailsComponentThree';
 import DetailsComponentOne from '../components/DetailsComponentOne';
+import HomeRasiphalaluItemTwo from '../components/HomeRasiphalaluItemTwo';
 // import Image from 'react-native-fast-image';
 const screenWidth = Dimensions.get('window').width;
 
 // let decode = require('html-entities-decoder');
 
-const Details = ({ navigation, 
-  relatedData, 
-  relatedLoading,
-  articleDetailData,
-  articleDetailLoading,
-  sliderData,
-  loading,
-  latestNews,
-  latestLoading, route }: Props) => {
+const horoscopeDetails = ({ navigation, relatedData, relatedLoading,
+  rasiPhalaluData,
+  rasiPhalaluLoading, route,propsdata }: Props) => {
   const dispatch = useDispatch();
   const [detailsData, setDetailsData] = useState([]);
   // const [autiHeightData,setAutiHeightData] =useState();
-  console.log(route?.params?.item?.id, '===============================================>id in details screen');
- 
+
   useEffect(() => {
     dispatch(getRelatedAction(route?.params?.item?.id));
     setDetailsData(route?.params?.detailsData);
@@ -52,39 +47,14 @@ const Details = ({ navigation,
   const goToTop = () => {
     Scrollref.current.scrollTo({ x: 0, y: 0, animated: true });
   };
-  const getIndex = () => {
-    var index = detailsData.findIndex(
-      x => x.id === route?.params?.item?.id,
-    );
-    return index + 1;
-  };
-   const source = route?.params?.item?.content?.rendered;
+
+  const source = route?.params?.item?.content?.rendered;
   var source1 = source?.replace('lazyload', 'text/javascript');
-  const renderItemOne = ({ item }) => (
-    <DetailsComponentOne
-      item={item}
-      propsdata={relatedData?.data}
-      navigation={navigation}
-
-    />
-  );
-  const renderItemTwo = ({ item }) => (
-    <DetailsComponentTwo
-      item={item}
-      propsdata={relatedData?.data}
-      navigation={navigation}
-
-    />
-  );
-  const renderItemThree = ({ item }) => (
-    <DetailsComponentThree
-      item={item}
-      propsdata={relatedData?.data}
-      navigation={navigation}
-
-    />
-  );
-
+  //   const hor = route?.params?.item?.horoscope_date;
+  //   const hor = {...route.params.item.filter(obj => {
+  //     return obj.horoscope_type === 'weekly';
+  //   })};
+  //   console.log(hor,'=================>hor');
 
   return (
     <View style={commonstyles.container}>
@@ -174,7 +144,7 @@ const Details = ({ navigation,
             />
           </View>
 
-          <View style={{ margin: 10, }}>
+          <View style={{ margin: 10 }}>
             <HTMLView
               value={'<p>' + route?.params?.item?.title?.rendered + '</p>'}
               stylesheet={headerStyles}
@@ -201,7 +171,7 @@ const Details = ({ navigation,
               pointerEvents: 'none',
               paddingLeft: 10,
             }}>
-              {/* <Text>{source1}</Text> */}
+            {/* <Text>{source1}</Text> */}
             <AutoHeightWebView style={{ width: Dimensions.get('window').width - 15, marginTop: 35 }}
               customStyle={`
               * {
@@ -233,7 +203,7 @@ const Details = ({ navigation,
                                               p strong{
                                                 color:#262A85 !importent
                                               }
-                                              h2 span{
+                                              h2 span em strong{
                                                 color:#262A85 !importent
                                               }
                                              
@@ -248,70 +218,61 @@ const Details = ({ navigation,
 
             />
           </View>
-         
-          {/* Related News */}
-          <View>
-            <View style={{ marginLeft: 10, marginTop: 10 }}>
-              <Text style={commonstyles.relatedText}>Related News</Text>
-            </View>
-            {/* Related news FlatList */}
-            {relatedData?.data !== 0 && { relatedLoading } ? (
-              <View >
+          {/* weekly horoscope */}
+          <View style={{ height: 70, width: '100%', backgroundColor: appThemeColor, marginBottom: 5, marginTop: 5 }}>
+            <View style={commonstyles.flatView}>
+              <FlatList
+                showsHorizontalScrollIndicator={false}
+                persistentScrollbar={false}
+                data={rasiPhalaluData?.data?.filter(obj => {
+                  return obj.horoscope_type === 'weekly';
+                }).slice(0, 1)}
+                onEndReachedThreshold={50}
+                getItemLayout={(data, index) => (
+                  { length: 40, offset: 40 * index, index }
+                )}
+                renderItem={({ item, index }) => (
+                  <View>
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation.navigate('horoscopeWeeklyDetails', {
+                          item: item,
+                          detailsData:propsdata,
+                        });
+                      }}>
+                      <View style={{
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                      }}>
+                        <View style={{ flexDirection: 'row' }}>
+                          <View style={{ flex: 2, alignItems: 'center', marginVertical: 20 }}>
+                            <Text
+                              numberOfLines={2}
+                              ellipsizeMode="tail"
+                              style={{
+                                color: whitecolor,
+                                fontFamily: 'Mandali-Bold',
+                                fontSize: 18,
+                                lineHeight: 29,
+                              }}>ఈ వారం రాశి ఫలాలు {' '}({(item?.horoscope_date)})
+                            </Text>
+                          </View>
+                        </View>
 
-                <FlatList
-                  showsHorizontalScrollIndicator={false}
-                  persistentScrollbar={false}
-                  data={relatedData?.data}
-                  renderItem={renderItemOne}
-                />
 
-              </View>
-            ) : (
-              <View>
-                <Text>Loading</Text>
-              </View>
-            )}
-          </View>
+                      </View>
+                      {/* </View> */}
+                    </TouchableOpacity>
 
-          {/* next Articles */}
-          <View>
-            <FlatList
-              showsHorizontalScrollIndicator={false}
-              persistentScrollbar={false}
-              data={detailsData?.slice(
-                getIndex(),
-                getIndex() + 10,
-
-              )}
-              renderItem={renderItemTwo}
-            />
-          </View>
-          {/* Flash News */}
-          <View>
-            <View style={{ marginLeft: 10 }}>
-              <Text style={commonstyles.relatedText}>Flash News</Text>
-            </View>
-            <View style={commonstyles.photoview}>
-              <View>
-
-                <View>
-                  <FlatList
-                    data={latestNews?.data}
-                    showsHorizontalScrollIndicator={false}
-                    horizontal={true}
-                    renderItem={renderItemThree}
-                  />
-                </View>
-              </View>
+                  </View>
+                )
+                }
+              />
             </View>
           </View>
         </View>
       </ScrollView>
-      {/* {this.state.isLoading == false && (
-          <View style={commonstyles.loading}>
-            <ActivityIndicator color={appThemeColor} size="large" />
-          </View>
-        )} */}
+
     </View>
   );
 };
@@ -335,29 +296,17 @@ const RelatedTextStyles = StyleSheet.create({
   p: { color: '#000', fontSize: 20, fontFamily: 'JIMS', lineHeight: 25, top: 10 },
 });
 type Props = {
-  relatedData: Function,
-  relatedLoading: Boolean,
-  sliderData: Function,
-  loading: Boolean,
-  latestNews: Function,
-  latestLoading: Boolean,
-  articleDetailData: Function,
-  articleDetailLoading: Boolean,
 
+  rasiPhalaluData: Function,
+  rasiPhalaluLoading: Boolean,
 };
 
 const mapStateToProps = state => ({
-  relatedData: state.relatedReducer?.relatedData,
-  relatedLoading: state.relatedReducer?.relatedLoading,
-  sliderData: state.sliderReducer?.sliderData,
-  loading: state.sliderReducer?.loading,
-  latestNews: state.latestNewsReducer?.latestNews,
-  latestLoading: state.latestNewsReducer?.latestLoading,
-  articleDetailData: state.articleDetailReducer?.articleDetailData,
-  articleDetailLoading: state.articleDetailReducer?.articleDetailLoading,
+  rasiPhalaluData: state.rasiPhalauReducer?.rasiPhalaluData,
+  rasiPhalaluLoading: state.rasiPhalauReducer?.rasiPhalaluLoading,
 });
 const mapDispatchToProps = {
   getRelatedAction,
   getArticleDetailAction,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Details);
+export default connect(mapStateToProps, mapDispatchToProps)(horoscopeDetails);

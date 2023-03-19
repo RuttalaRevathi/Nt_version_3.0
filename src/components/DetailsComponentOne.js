@@ -8,6 +8,7 @@ import {commonstyles} from '../styles/commonstyles';
 
 class DetailsComponentOne extends React.PureComponent {
   render() {
+    let decode = require('html-entities-decoder');
     return (
       <View>
         <TouchableOpacity
@@ -30,7 +31,7 @@ class DetailsComponentOne extends React.PureComponent {
                 numberOfLines={2}
                 ellipsizeMode="tail"
                 style={commonstyles.latestText}>
-                {this.props?.item?.title?.rendered}
+                {decode(this.props?.item?.title?.rendered)}
               </Text>
               <View style={commonstyles.timeview}>
                 <Text style={commonstyles.latesttime}>

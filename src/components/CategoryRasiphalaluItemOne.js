@@ -17,14 +17,14 @@ import {
 } from '../styles/commonstyles';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-class HomeRasiphalaluItemTwo extends React.PureComponent {
+class CategoryRasiphalaluItemOne extends React.PureComponent {
     render() {
         let decode = require('html-entities-decoder');
         return (
             <View>
                 <TouchableOpacity
                     onPress={() => {
-                        this.props?.navigation.navigate('horoscopeWeeklyDetails', {
+                        this.props?.navigation.navigate('horoscopeDetails', {
                             item: this.props?.item,
                             detailsData: this.props?.propsdata,
                         });
@@ -33,7 +33,7 @@ class HomeRasiphalaluItemTwo extends React.PureComponent {
                         <View style={{ flexDirection: 'row' }}>
                             <View style={commonstyles.horoimageView}>
                                 <Image
-                                    source={require('../Assets/Images/weekly.jpeg')}
+                                    source={require('../Assets/Images/daily.jpeg')}
                                     style={commonstyles.horoimage}
                                 />
                             </View>
@@ -41,19 +41,20 @@ class HomeRasiphalaluItemTwo extends React.PureComponent {
                                 <Text
                                     numberOfLines={2}
                                     ellipsizeMode="tail"
-                                    style={commonstyles.horotext}>ఈ వారం రాశి ఫలాలు {' '}({(this.props?.item?.horoscope_date)})
+                                    style={commonstyles.horotext}>నేటి రాశి ఫలాలు
+                                    ({moment(this.props?.item?.date_gmt).format('DD-MM-YYYY')})
                                 </Text>
                             </View>
                         </View>
                         {/* more text */}
-                        <View style={commonstyles.horomore}>
+                        {/* <View style={commonstyles.horomore}>
                             <TouchableOpacity
                                 onPress={() => {
                                     this.props?.navigation.navigate('రాశిఫలాలు‌');
                                 }}>
                                 <Text style={commonstyles.horomoretext}>More . . .</Text>
                             </TouchableOpacity>
-                        </View>
+                        </View> */}
 
                     </View>
                     {/* </View> */}
@@ -63,4 +64,4 @@ class HomeRasiphalaluItemTwo extends React.PureComponent {
         );
     }
 }
-export default HomeRasiphalaluItemTwo;
+export default CategoryRasiphalaluItemOne;

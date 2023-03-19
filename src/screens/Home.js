@@ -15,6 +15,8 @@ import {
   ScrollView,
   ActivityIndicator,
   ImageBackground,
+  SafeAreaView,
+  RefreshControl,
 } from 'react-native';
 import getSliderAction from '../redux/actions/getSliderAction';
 
@@ -117,7 +119,9 @@ const Home = ({
 }: Props) => {
   // let decode = require('html-entities-decoder');
   const isCarousel = useRef(null);
-  const [index, setIndex] = useState(0);
+  // const [index, setIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [autoPlayState,setAutoPlayState] = useState(true);
   sliderData = useSelector(state => state.sliderReducer.sliderData);
   loading = useSelector(state => state.sliderReducer.loading);
   latestNews = useSelector(state => state.latestNewsReducer.latestNews);
@@ -186,51 +190,14 @@ const Home = ({
   const [totalLoading, setTotalLoading] = useState(false);
   let decode = require('html-entities-decoder');
 
-  useEffect(() => {
-    console.log(rasiPhalaluData?.data,"----------->rasi");
-    store.dispatch(getSliderAction());
-    store.dispatch(getLatestNewsAction());
-    store.dispatch(getCinemaAction());
-    store.dispatch(getRasiPhalaluAction());
-    store.dispatch(getCartoonAction());
-    store.dispatch(getHealthAction());
-    store.dispatch(getHyderabadAction());
-    store.dispatch(getTelanganaAction());
-    store.dispatch(getApAction());
-    store.dispatch(getNationalAction());
-    store.dispatch(getInterNationalAction());
-    store.dispatch(getSportsAction());
-    store.dispatch(getBusinessAction());
-    store.dispatch(getNriAction());
-    store.dispatch(getEditPageAction());
-    store.dispatch(getZindagiAction());
-    store.dispatch(getBathukammaAction());
-    store.dispatch(getAgricultureAction());
-    store.dispatch(getCookingAction());
-    store.dispatch(getVaasthuAction());
-    store.dispatch(getVideoAction());
-    store.dispatch(getPhotoGalleryAction());
-    store.dispatch(getKarimnagarAction());
-    store.dispatch(getKhammamAction());
-    store.dispatch(getMahabubnagarAction());
-    store.dispatch(getMedakAction());
-    store.dispatch(getNalgondaAction());
-    store.dispatch(getNizamabadAction());
-    store.dispatch(getRangareddyAction());
-    store.dispatch(getWarangalAction());
-    //hides the splash screen on app load.
-   
-  }, []);
-  useEffect(() => {
-    console.log(rasiPhalaluData?.data,"----------->rasi");
-   
-  }, []);
+
+
   const carouselItem = ({ item, index }) => (
     <HomeCarouselItem
       item={item}
       propsdata={sliderData?.data}
       navigation={navigation}
-      index={index}
+      index={activeIndex}
 
     />
   );
@@ -288,326 +255,375 @@ const Home = ({
       index={index}
     />
   );
+  const [refreshing, setRefreshing] = React.useState(false);
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    // setAutoPlayState(false);
+    // setActiveIndex(0);
+   
+    setTimeout(() => {
+      setRefreshing(false);
+      dispatch(getSliderAction());
+      dispatch(getLatestNewsAction());
+      dispatch(getCinemaAction());
+      dispatch(getRasiPhalaluAction());
+      dispatch(getCartoonAction());
+      dispatch(getHealthAction());
+      dispatch(getHyderabadAction());
+      dispatch(getTelanganaAction());
+      dispatch(getApAction());
+      dispatch(getNationalAction());
+      dispatch(getInterNationalAction());
+      dispatch(getSportsAction());
+      dispatch(getBusinessAction());
+      dispatch(getNriAction());
+      dispatch(getEditPageAction());
+      dispatch(getZindagiAction());
+      dispatch(getBathukammaAction());
+      dispatch(getAgricultureAction());
+      dispatch(getCookingAction());
+      dispatch(getVaasthuAction());
+      dispatch(getVideoAction());
+      dispatch(getPhotoGalleryAction());
+      dispatch(getKarimnagarAction());
+      dispatch(getKhammamAction());
+  
+      dispatch(getKhammamAction());
+      dispatch(getMahabubnagarAction());
+      dispatch(getMedakAction());
+      dispatch(getNationalAction());
+      dispatch(getNizamabadAction());
+      dispatch(getRangareddyAction());
+      dispatch(getWarangalAction());
+      // setAutoPlayState(true);
+      //      setActiveIndex(0);
 
+    }, 3000);
+  }, []);
 
   return (
-    <ScrollView style={commonstyles.scroll}>
-      <View style={{ padding: 10 }}>
-        {/* Spinner */}
-        <Spinner
-          //visibility of Overlay Loading Spinner
-          visible={loading && latestLoading && cinemaLoading}
-          //Text with the Spinner
-          textContent={'Loading...'}
-          //Text style of the Spinner Text
-          textStyle={{ color: '#FFF' }}
-        />
-        {/* Slider */}
-        <View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView style={commonstyles.scroll} refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
+        <View style={{ padding: 10 }}>
+          {/* Spinner */}
+          <Spinner
+            //visibility of Overlay Loading Spinner
+            visible={loading && latestLoading && cinemaLoading}
+            //Text with the Spinner
+            textContent={'Loading...'}
+            //Text style of the Spinner Text
+            textStyle={{ color: '#FFF' }}
+          />
+          {/* Slider */}
+          <View>
           <Carousel
             layout="default"
             ref={isCarousel}
             autoplay={true}
-            // autoplayDelay={100}
-            // autoplayInterval={100}
+            // autoplayDelay={500}
+            // autoplayInterval={500}
             data={sliderData?.data}
             renderItem={carouselItem}
-            // loop={true}
+             loop={true}
             sliderWidth={SLIDER_WIDTH}
             itemWidth={ITEM_WIDTH}
-            onSnapToItem={index => setIndex(index)}
+            onSnapToItem = { index => setActiveIndex(index) }
             useScrollView={true}
           />
-          <Pagination
-            style={commonstyles.pagination}
-            carouselRef={isCarousel}
-            dotStyle={{ display: 'none' }}
-            enableMomentum={true}
+            <Pagination
+              style={commonstyles.pagination}
+              carouselRef={isCarousel}
+              dotStyle={{ display: 'flex' }}
+              enableMomentum={true}
+              
+            />
+          </View>
+          {/* LatestNews */}
+          <HomeUI
+            categoryName="తాజావార్తలు"
+            data={latestNews?.data?.filter(obj => {
+              return obj.format === 'standard';
+            })}
+            navigationScreen="LatestNews"
+            navigation={navigation}
           />
-        </View>
-        {/* LatestNews */}
-        <HomeUI
-          categoryName="తాజావార్తలు"
-          data={latestNews?.data?.filter(obj => {
-            return obj.format === 'standard';
-          })}
-          navigationScreen="LatestNews"
-          navigation={navigation}
-        />
-        {/* Cinema */}
-        <HomeUI
-          categoryName="సినిమా"
-          data={cinemaData?.data}
-          navigationScreen="సినిమా"
-          navigation={navigation}
-        />
-        {/* RasiPhalalu */}
-        {/* <HomeUI
+          {/* Cinema */}
+          <HomeUI
+            categoryName="సినిమా"
+            data={cinemaData?.data}
+            navigationScreen="సినిమా"
+            navigation={navigation}
+          />
+          {/* RasiPhalalu */}
+          {/* <HomeUI
           categoryName="రాశి ఫలాలు"
           data={rasiPhalaluData?.data}
           navigationScreen="రాశి ఫలాలు"
           navigation={navigation}
         /> */}
-        <View style={commonstyles.categoryMview}>
-          <View style={commonstyles.categoryView}>
-            <View>
-              <Text style={commonstyles.Category}>{"రాశి ఫలాలు"}</Text>
-            </View>
-            <View style={commonstyles.dot}>
-              <FontAwesome name="circle" size={10} color={appThemeColor} />
-            </View>
-          </View>
-        </View>
-
-        <View style={commonstyles.flatView}>
-          <FlatList
-            showsHorizontalScrollIndicator={false}
-            persistentScrollbar={false}
-            data={rasiPhalaluData?.data?.slice(0, 1)}
-            onEndReachedThreshold={50}
-            getItemLayout={(data, index) => (
-              { length: 40, offset: 40 * index, index }
-            )}
-            renderItem={rasiPhalaluItemOne}
-          />
-        </View>
-        <View style={commonstyles.flatView}>
-          <FlatList
-            showsHorizontalScrollIndicator={false}
-            persistentScrollbar={false}
-            data={rasiPhalaluData?.data?.filter(obj => {
-              return obj.horoscope_type === 'weekly';
-            }).slice(0,1)}
-            onEndReachedThreshold={50}
-            getItemLayout={(data, index) => (
-              { length: 40, offset: 40 * index, index }
-            )}
-            renderItem={rasiPhalaluItemTwo}
-          />
-        </View>
-
-
-
-        {/* Cartoon */}
-        <View>
-          {/* Cartoon   text*/}
           <View style={commonstyles.categoryMview}>
             <View style={commonstyles.categoryView}>
               <View>
-                <Text style={commonstyles.Category}>{'కార్టూన్‌'}</Text>
+                <Text style={commonstyles.Category}>{"రాశి ఫలాలు"}</Text>
               </View>
               <View style={commonstyles.dot}>
                 <FontAwesome name="circle" size={10} color={appThemeColor} />
               </View>
             </View>
           </View>
-          {/* Cartoon  Cards*/}
-          <View>
-            <View>
-              <FlatList
-                // style={[commonstyles.bgDarkGrey]}
-                data={cartoonData?.data?.slice(0, 1)}
-                showsHorizontalScrollIndicator={true}
-                horizontal={true}
-                renderItem={cartoonItem}
-              />
-              {/* more text */}
-              <View style={commonstyles.moreview}>
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate('కార్టూన్‌');
-                  }}>
-                  <Text style={commonstyles.moretext}>More . . .</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
+
+          <View style={commonstyles.flatView}>
+            <FlatList
+              showsHorizontalScrollIndicator={false}
+              persistentScrollbar={false}
+              data={rasiPhalaluData?.data?.slice(0, 1)}
+              onEndReachedThreshold={50}
+              getItemLayout={(data, index) => (
+                { length: 40, offset: 40 * index, index }
+              )}
+              renderItem={rasiPhalaluItemOne}
+            />
           </View>
-        </View>
+          <View style={commonstyles.flatView}>
+            <FlatList
+              showsHorizontalScrollIndicator={false}
+              persistentScrollbar={false}
+              data={rasiPhalaluData?.data?.filter(obj => {
+                return obj.horoscope_type === 'weekly';
+              }).slice(0, 1)}
+              onEndReachedThreshold={50}
+              getItemLayout={(data, index) => (
+                { length: 40, offset: 40 * index, index }
+              )}
+              renderItem={rasiPhalaluItemTwo}
+            />
+          </View>
 
-        {/* Health */}
-        <HomeUI
-          categoryName="ఆరోగ్యం"
-          data={healthData?.data}
-          navigationScreen="ఆరోగ్యం"
-          navigation={navigation}
-        />
-        {/* Hyderabad */}
-        <HomeUI
-          categoryName="హైదరాబాద్‌"
-          data={hyderabadData?.data}
-          navigationScreen="హైదరాబాద్‌"
-          navigation={navigation}
-        />
-        {/* telangana */}
-        <HomeUI
-          categoryName="తెలంగాణ"
-          data={telanganaData?.data}
-          navigationScreen="తెలంగాణ"
-          navigation={navigation}
-        />
-        {/* ap */}
-        <HomeUI
-          categoryName="ఆంధ్రప్రదేశ్"
-          data={apData?.data}
-          navigationScreen="ఆంధ్రప్రదేశ్"
-          navigation={navigation}
-        />
-        {/* national */}
-        <HomeUI
-          categoryName="జాతీయం"
-          data={nationalData?.data}
-          navigationScreen="జాతీయం"
-          navigation={navigation}
-        />
-        {/* International */}
-        <HomeUI
-          categoryName="అంతర్జాతీయం"
-          data={interNationalData?.data}
-          navigationScreen="అంతర్జాతీయం"
-          navigation={navigation}
-        />
-        {/* sports */}
-        <HomeUI
-          categoryName="స్పోర్ట్స్"
-          data={sportsData?.data}
-          navigationScreen="స్పోర్ట్స్"
-          navigation={navigation}
-        />
-        {/* Business */}
-        <HomeUI
-          categoryName="బిజినెస్"
-          data={businessData?.data}
-          navigationScreen="బిజినెస్"
-          navigation={navigation}
-        />
-        {/* Nri */}
-        <HomeUI
-          categoryName="ఎన్‌ఆర్‌ఐ"
-          data={nriData?.data}
-          navigationScreen="ఎన్‌ఆర్‌ఐ"
-          navigation={navigation}
-        />
-        {/* Photo Gallery */}
-        <View>
-          {/*photo gallery  text*/}
 
-          <View style={commonstyles.photoview}>
-            <View style={commonstyles.phototextview}>
-              <View style={{ flex: 1.7 }}>
-                <Text style={commonstyles.ptext}>ఫోటో గ్యాలరీ</Text>
+
+          {/* Cartoon */}
+          <View>
+            {/* Cartoon   text*/}
+            <View style={commonstyles.categoryMview}>
+              <View style={commonstyles.categoryView}>
+                <View>
+                  <Text style={commonstyles.Category}>{'కార్టూన్‌'}</Text>
+                </View>
+                <View style={commonstyles.dot}>
+                  <FontAwesome name="circle" size={10} color={appThemeColor} />
+                </View>
               </View>
             </View>
-            {/* photo gallery  Cards*/}
+            {/* Cartoon  Cards*/}
             <View>
               <View>
                 <FlatList
-                  data={photosData?.data?.slice(0, 1)}
-                  showsHorizontalScrollIndicator={false}
-                  horizontal={true}
-                  renderItem={photoGalleryItemOne}
-                />
-              </View>
-              <View>
-                <FlatList persistentScrollbar
-                  data={photosData?.data?.slice(1, 10)}
+                  // style={[commonstyles.bgDarkGrey]}
+                  data={cartoonData?.data?.slice(0, 1)}
                   showsHorizontalScrollIndicator={true}
                   horizontal={true}
-                  renderItem={photoGalleryItemTwo}
+                  renderItem={cartoonItem}
                 />
-              </View>
-
-            </View>
-          </View>
-          {/* more text */}
-          <View style={commonstyles.moreview}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('ఫొటోలు');
-              }}>
-              <Text style={commonstyles.moretext}>More . . .</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        {/* videos Gallery */}
-        <View>
-          {/*videos  text*/}
-
-          <View style={commonstyles.photoview}>
-            <View style={commonstyles.phototextview}>
-              <View style={{ flex: 1.7 }}>
-                <Text style={commonstyles.ptext}>వీడియోలు</Text>
+                {/* more text */}
+                <View style={commonstyles.moreview}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      navigation.navigate('కార్టూన్‌');
+                    }}>
+                    <Text style={commonstyles.moretext}>More . . .</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
-            {/* videos  Cards*/}
-            <View>
+          </View>
+
+          {/* Health */}
+          <HomeUI
+            categoryName="ఆరోగ్యం"
+            data={healthData?.data}
+            navigationScreen="ఆరోగ్యం"
+            navigation={navigation}
+          />
+          {/* Hyderabad */}
+          <HomeUI
+            categoryName="హైదరాబాద్‌"
+            data={hyderabadData?.data}
+            navigationScreen="హైదరాబాద్‌"
+            navigation={navigation}
+          />
+          {/* telangana */}
+          <HomeUI
+            categoryName="తెలంగాణ"
+            data={telanganaData?.data}
+            navigationScreen="తెలంగాణ"
+            navigation={navigation}
+          />
+          {/* ap */}
+          <HomeUI
+            categoryName="ఆంధ్రప్రదేశ్"
+            data={apData?.data}
+            navigationScreen="ఆంధ్రప్రదేశ్"
+            navigation={navigation}
+          />
+          {/* national */}
+          <HomeUI
+            categoryName="జాతీయం"
+            data={nationalData?.data}
+            navigationScreen="జాతీయం"
+            navigation={navigation}
+          />
+          {/* International */}
+          <HomeUI
+            categoryName="అంతర్జాతీయం"
+            data={interNationalData?.data}
+            navigationScreen="అంతర్జాతీయం"
+            navigation={navigation}
+          />
+          {/* sports */}
+          <HomeUI
+            categoryName="స్పోర్ట్స్"
+            data={sportsData?.data}
+            navigationScreen="స్పోర్ట్స్"
+            navigation={navigation}
+          />
+          {/* Business */}
+          <HomeUI
+            categoryName="బిజినెస్"
+            data={businessData?.data}
+            navigationScreen="బిజినెస్"
+            navigation={navigation}
+          />
+          {/* Nri */}
+          <HomeUI
+            categoryName="ఎన్‌ఆర్‌ఐ"
+            data={nriData?.data}
+            navigationScreen="ఎన్‌ఆర్‌ఐ"
+            navigation={navigation}
+          />
+          {/* Photo Gallery */}
+          <View>
+            {/*photo gallery  text*/}
+
+            <View style={commonstyles.photoview}>
+              <View style={commonstyles.phototextview}>
+                <View style={{ flex: 1.7 }}>
+                  <Text style={commonstyles.ptext}>ఫోటో గ్యాలరీ</Text>
+                </View>
+              </View>
+              {/* photo gallery  Cards*/}
               <View>
-                <FlatList
-                  data={videosData?.data}
-                  showsHorizontalScrollIndicator={false}
-                  horizontal={true}
-                  renderItem={videoGalleryitem}
-                />
+                <View>
+                  <FlatList
+                    data={photosData?.data?.slice(0, 1)}
+                    showsHorizontalScrollIndicator={false}
+                    horizontal={true}
+                    renderItem={photoGalleryItemOne}
+                  />
+                </View>
+                <View>
+                  <FlatList persistentScrollbar
+                    data={photosData?.data?.slice(1, 10)}
+                    showsHorizontalScrollIndicator={true}
+                    horizontal={true}
+                    renderItem={photoGalleryItemTwo}
+                  />
+                </View>
 
               </View>
-
+            </View>
+            {/* more text */}
+            <View style={commonstyles.moreview}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('ఫొటోలు');
+                }}>
+                <Text style={commonstyles.moretext}>More . . .</Text>
+              </TouchableOpacity>
             </View>
           </View>
-          {/* more text */}
-          <View style={commonstyles.moreview}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('వీడియోలు');
-              }}>
-              <Text style={commonstyles.moretext}>More . . .</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        {/* EditPage */}
-        <HomeUI
-          categoryName="ఎడిట్‌ పేజీ"
-          data={editPageData?.data}
-          navigationScreen="ఎడిట్‌ పేజీ"
-          navigation={navigation}
-        />
 
-        {/* Zindagi */}
-        <HomeUI
-          categoryName="జిందగీ"
-          data={zindagiData?.data}
-          navigationScreen="జిందగీ"
-          navigation={navigation}
-        />
-        {/* Bathukamma */}
-        <HomeUI
-          categoryName="బతుకమ్మ"
-          data={bathukammaData?.data}
-          navigationScreen="బతుకమ్మ"
-          navigation={navigation}
-        />
-        {/* Agriculture */}
-        <HomeUI
-          categoryName="వ్యవసాయం"
-          data={agricultureData?.data}
-          navigationScreen="వ్యవసాయం"
-          navigation={navigation}
-        />
-        {/* Cooking */}
-        <HomeUI
-          categoryName="వంటలు"
-          data={cookingData?.data}
-          navigationScreen="వంటలు"
-          navigation={navigation}
-        />
-        {/* Vaasthu */}
-        <HomeUI
-          categoryName="వాస్తు"
-          data={vaasthuData?.data}
-          navigationScreen="వాస్తు"
-          navigation={navigation}
-        />
-      </View>
-    </ScrollView >
+          {/* videos Gallery */}
+          <View>
+            {/*videos  text*/}
+
+            <View style={commonstyles.photoview}>
+              <View style={commonstyles.phototextview}>
+                <View style={{ flex: 1.7 }}>
+                  <Text style={commonstyles.ptext}>వీడియోలు</Text>
+                </View>
+              </View>
+              {/* videos  Cards*/}
+              <View>
+                <View>
+                  <FlatList
+                    data={videosData?.data}
+                    showsHorizontalScrollIndicator={false}
+                    horizontal={true}
+                    renderItem={videoGalleryitem}
+                  />
+
+                </View>
+
+              </View>
+            </View>
+            {/* more text */}
+            <View style={commonstyles.moreview}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('వీడియోలు');
+                }}>
+                <Text style={commonstyles.moretext}>More . . .</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          {/* EditPage */}
+          <HomeUI
+            categoryName="ఎడిట్‌ పేజీ"
+            data={editPageData?.data}
+            navigationScreen="ఎడిట్‌ పేజీ"
+            navigation={navigation}
+          />
+
+          {/* Zindagi */}
+          <HomeUI
+            categoryName="జిందగీ"
+            data={zindagiData?.data}
+            navigationScreen="జిందగీ"
+            navigation={navigation}
+          />
+          {/* Bathukamma */}
+          <HomeUI
+            categoryName="బతుకమ్మ"
+            data={bathukammaData?.data}
+            navigationScreen="బతుకమ్మ"
+            navigation={navigation}
+          />
+          {/* Agriculture */}
+          <HomeUI
+            categoryName="వ్యవసాయం"
+            data={agricultureData?.data}
+            navigationScreen="వ్యవసాయం"
+            navigation={navigation}
+          />
+          {/* Cooking */}
+          <HomeUI
+            categoryName="వంటలు"
+            data={cookingData?.data}
+            navigationScreen="వంటలు"
+            navigation={navigation}
+          />
+          {/* Vaasthu */}
+          <HomeUI
+            categoryName="వాస్తు"
+            data={vaasthuData?.data}
+            navigationScreen="వాస్తు"
+            navigation={navigation}
+          />
+        </View>
+      </ScrollView >
+    </SafeAreaView>
   );
 };
 

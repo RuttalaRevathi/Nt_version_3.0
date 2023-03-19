@@ -22,6 +22,7 @@ const screenWidth = Dimensions.get('window').width;
 
 class DetailsComponentThree extends React.PureComponent {
   render() {
+    let decode = require('html-entities-decoder');
     return (
       <View style={{marginRight: 5, marginLeft: 10}}>
         <TouchableOpacity
@@ -44,7 +45,7 @@ class DetailsComponentThree extends React.PureComponent {
                 numberOfLines={2}
                 ellipsizeMode="tail"
                 style={commonstyles.flashtext}>
-                {this.props?.item?.title?.rendered}
+                {decode(this.props?.item?.title?.rendered)}
               </Text>
             </LinearGradient>
           </View>

@@ -149,42 +149,24 @@ export const commonstyles = StyleSheet.create({
   },
   photocard: {
     height: Dimensions.get('window').height * 0.32,
-    // width: screenWidth - 50,
-    // width: '100%',
-    // flex: 1,
-    // margin: 5,
-    // marginLeft: 5,
-    // marginRight: 5,
     resizeMode: 'contain',
     aspectRatio: 9 / 9,
     borderRadius: 5,
-    // padding:10
 
   },
   videocard: {
     height: Dimensions.get('window').height * 0.32,
-    // width: screenWidth - 50,
-    // width: '100%',
-    // flex: 1,
-    // margin: 5,
-    // marginLeft: 5,
-    // marginRight: 5,
-    resizeMode: 'contain',
+       resizeMode: 'contain',
     aspectRatio: 10 / 9,
     borderRadius: 5,
-    // padding:10
-
+ 
   },
   pagination: {
     position: 'relative',
-    top: -20,
+    // top: -20,
   },
   slidertext: {
-    // color: '#222222',
-    // fontSize: 18,
-    // paddingLeft: 20,
-    // paddingRight: 20,
-    color: whitecolor,
+       color: whitecolor,
     fontFamily: 'Mandali-Bold',
     fontSize: 22,
     marginLeft: 10,
@@ -503,5 +485,32 @@ export const commonstyles = StyleSheet.create({
     textAlign: 'center',
     color: '#000000',
   },
+  // Horoscope new design 17/3 /23
+  horoMainView:{
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
+    flex: 1,
+    margin: 5,
+    borderBottomColor: medium_gray,
+    borderBottomWidth: 1.5,
+},
+horoimageView:{marginRight: 5, 
+  flexDirection: 'row'},
+horoimage:{ width: 120, height: 90, 
+  borderRadius:5,resizeMode:'contain'},
+horotextView:{ flex: 2},
+horotext:{
+  color: blackcolor,
+  fontFamily: 'Mandali-Bold',
+  fontSize: 18,
+  lineHeight: 31,
+  marginLeft: 5,
+  marginVertical: 20,
+},
+horomore:{ justifyContent: 'flex-end', alignItems: 'flex-end', alignSelf: 'flex-end' },
+horomoretext:{
+  fontFamily: 'RobotoCondensed-Regular',
+  fontSize: 18, color: appThemeColor,
+},
 
 });

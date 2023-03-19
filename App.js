@@ -40,39 +40,39 @@ import { getRangareddyAction } from './src/redux/actions/getRangareddyAction';
 import { getWarangalAction } from './src/redux/actions/getWarangalAction';
 
 const App = () => {
-  // useEffect(() => {
-  //   store.dispatch(getSliderAction());
-  //   store.dispatch(getLatestNewsAction());
-  //   store.dispatch(getCinemaAction());
-  //   store.dispatch(getRasiPhalaluAction());
-  //   store.dispatch(getCartoonAction());
-  //   store.dispatch(getHealthAction());
-  //   store.dispatch(getHyderabadAction());
-  //   store.dispatch(getTelanganaAction());
-  //   store.dispatch(getApAction());
-  //   store.dispatch(getNationalAction());
-  //   store.dispatch(getInterNationalAction());
-  //   store.dispatch(getSportsAction());
-  //   store.dispatch(getBusinessAction());
-  //   store.dispatch(getNriAction());
-  //   store.dispatch(getEditPageAction());
-  //   store.dispatch(getZindagiAction());
-  //   store.dispatch(getBathukammaAction());
-  //   store.dispatch(getAgricultureAction());
-  //   store.dispatch(getCookingAction());
-  //   store.dispatch(getVaasthuAction());
-  //   store.dispatch(getVideoAction());
-  //   store.dispatch(getPhotoGalleryAction());
-  //   store.dispatch(getKarimnagarAction());
-  //   store.dispatch(getKhammamAction());
-  //   store.dispatch(getMahabubnagarAction());
-  //   store.dispatch(getMedakAction());
-  //   store.dispatch(getNalgondaAction());
-  //   store.dispatch(getNizamabadAction());
-  //   store.dispatch(getRangareddyAction());
-  //   store.dispatch(getWarangalAction());
-  //   //hides the splash screen on app load.
-  // }, []);
+  useEffect(() => {
+    store.dispatch(getSliderAction());
+    store.dispatch(getLatestNewsAction());
+    store.dispatch(getCinemaAction());
+    store.dispatch(getRasiPhalaluAction());
+    store.dispatch(getCartoonAction());
+    store.dispatch(getHealthAction());
+    store.dispatch(getHyderabadAction());
+    store.dispatch(getTelanganaAction());
+    store.dispatch(getApAction());
+    store.dispatch(getNationalAction());
+    store.dispatch(getInterNationalAction());
+    store.dispatch(getSportsAction());
+    store.dispatch(getBusinessAction());
+    store.dispatch(getNriAction());
+    store.dispatch(getEditPageAction());
+    store.dispatch(getZindagiAction());
+    store.dispatch(getBathukammaAction());
+    store.dispatch(getAgricultureAction());
+    store.dispatch(getCookingAction());
+    store.dispatch(getVaasthuAction());
+    store.dispatch(getVideoAction());
+    store.dispatch(getPhotoGalleryAction());
+    store.dispatch(getKarimnagarAction());
+    store.dispatch(getKhammamAction());
+    store.dispatch(getMahabubnagarAction());
+    store.dispatch(getMedakAction());
+    store.dispatch(getNalgondaAction());
+    store.dispatch(getNizamabadAction());
+    store.dispatch(getRangareddyAction());
+    store.dispatch(getWarangalAction());
+    //hides the splash screen on app load.
+  }, []);
 
   return (
     <Provider store={store}>

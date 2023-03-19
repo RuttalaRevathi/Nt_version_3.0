@@ -21,6 +21,8 @@ import Nizamabad from '../../screens/DistrictScreens/Nizamabad';
 import Rangareddy from '../../screens/DistrictScreens/Rangareddy';
 import Warangal from '../../screens/DistrictScreens/Warangal';
 import HyderabadScreen from '../../screens/TopTabScreens/Hyderabad';
+import horoscopeDetails from '../../screens/horoscopeDetails';
+import horoscopeWeeklyDetails from '../../screens/horoscopeWeeklyDetails';
 const Stack = createStackNavigator();
 
 const HomeStackNavigator = () => {
@@ -34,6 +36,8 @@ const HomeStackNavigator = () => {
     >
       <Stack.Screen name="Home" component={TopTabNavigator} />
       <Stack.Screen name="Details" component={Details} />
+      <Stack.Screen name="horoscopeDetails" component={horoscopeDetails} />
+      <Stack.Screen name="horoscopeWeeklyDetails" component={horoscopeWeeklyDetails} />
       <Stack.Screen name="PhotoArticle" component={PhotoArticle} />
       <Stack.Screen name="VideoArticle" component={VideoArticle} />
       <Stack.Screen name="CartoonArticle" component={CartoonArticle} />
