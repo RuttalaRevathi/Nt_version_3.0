@@ -122,7 +122,10 @@ class DetailsComponentTwo extends React.PureComponent {
                                                       width:100%;
                                                       height:inherit
                                                     }
-                                                                                                                
+                                                    div[id*=attachment]{
+                                                      max-width:100%!important;
+                                                      height:inherit
+                                                    }                                                          
                   `}
             source={{
               html: (this.props.item.content.rendered +=

@@ -230,13 +230,12 @@ const Details = ({ navigation,
                                                 width:100%;
                                                 height:inherit
                                               }
-                                              p strong{
-                                                color:#262A85 !importent
-                                              }
-                                              h2 span{
-                                                color:#262A85 !importent
+                                              div[id*=attachment]{
+                                                max-width:100%!important;
+                                                height:inherit
                                               }
                                              
+                                            
             `}
               source={{
                 html: (source1 +=
