@@ -203,14 +203,12 @@ const horoscopeDetails = ({ navigation, relatedData, relatedLoading,
                                               p strong{
                                                 color:#262A85 !importent
                                               }
-                                              h2 span em strong{
-                                                color:#262A85 !importent
-                                              }
+                                             
                                              
             `}
               source={{
                 html: (source1 +=
-                  "<style>@import url('https://fonts.googleapis.com/css2?family=Mandali&display=swap');p strong, span, p span{font-family: 'Mandali', sans-serif;}p,li{font-family: 'Mandali', sans-serif;line-height:1.6;padding:0px 8px;color:#000;font-weight:500;font-size:18px}</style>"),
+                  "<style>@import url('https://fonts.googleapis.com/css2?family=Mandali&display=swap');p strong, span, p span{font-family: 'Mandali', sans-serif;}p,li{font-family: 'Mandali', sans-serif;line-height:1.6;padding:0px 8px;color:#000;font-weight:500;font-size:18px}p strong{color:#262A85 !important}</style>"),
                 baseUrl: 'https://twitter.com',
               }}
               scalesPageToFit={false}
