@@ -99,7 +99,7 @@ export const HeaderStyle = StyleSheet.create({
          height: 30, width: 30,
           marginRight: 10
       },
-    HeadRightImg:{ height: 20, width: 20, left: 2 }
+    HeadRightImg:{ height: 20, width: 20,  }
 
 
 

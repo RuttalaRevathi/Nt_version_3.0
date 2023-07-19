@@ -65,7 +65,6 @@ const Details = ({ navigation,
       item={item}
       propsdata={relatedData?.data}
       navigation={navigation}
-
     />
   );
   const renderItemTwo = ({ item }) => (

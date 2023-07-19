@@ -28,7 +28,7 @@ const sharecall = (name) => {
     .then((result) => console.log(result))
     .then((error) => console.log(error));
 };
-function CategoryUI(props, { navigation }) {
+function  CategoryUI(props, { navigation }) {
   useEffect(() => {
     // console.log(props.data,"categorydata");            
   })

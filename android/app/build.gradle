@@ -3,6 +3,7 @@ apply plugin: "com.android.application"
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
 
+
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -140,8 +141,8 @@ android {
         applicationId "com.namasthetelanganaapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 3
-        versionName "3.0"
+        versionCode 4
+        versionName "4.0"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
         if (isNewArchitectureEnabled()) {
@@ -213,6 +214,12 @@ android {
         }
     }
     signingConfigs {
+         release {
+        storeFile file('nt.keystore')
+        storePassword 'nt@123'
+        keyAlias 'nt'
+        keyPassword 'nt@123'
+    }
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
@@ -228,6 +235,7 @@ android {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
             signingConfig signingConfigs.debug
+             signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }

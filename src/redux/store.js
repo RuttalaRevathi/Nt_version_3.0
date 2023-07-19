@@ -34,6 +34,7 @@ import nizamabadReducer from '../redux/reducers/nizamabadReducer';
 import rangareddyReducer from '../redux/reducers/rangareddyReducer';
 import warangalReducer from '../redux/reducers/warangalReducer';
 import articleDetailReducer from '../redux/reducers/articleDetailReducer';
+import webstoriesReducer from '../redux/reducers/webstoriesReducer';
 
 
 const rootReducer = combineReducers({sliderReducer,latestNewsReducer,hyderabadReducer,
@@ -42,6 +43,6 @@ nationalReducer,interNationalReducer,sportsReducer,businessReducer,nriReducer,re
 photosGalleryReducer,editPageReducer,zindagiReducer,bathukammaReducer,agricultureReducer,
 cookingReducer,vaasthuReducer,videoReducer,adilabadReducer,karimnagarReducer,khammamReducer,
 mahabubnagarReducer,medakReducer,nalgondaReducer,nizamabadReducer,rangareddyReducer,warangalReducer,
-articleDetailReducer,
+articleDetailReducer,webstoriesReducer,
 });
 export const store = createStore(rootReducer, applyMiddleware(thunk));

@@ -38,6 +38,7 @@ import { getNalgondaAction } from './src/redux/actions/getNalgondaAction';
 import { getNizamabadAction } from './src/redux/actions/getNizamabadAction';
 import { getRangareddyAction } from './src/redux/actions/getRangareddyAction';
 import { getWarangalAction } from './src/redux/actions/getWarangalAction';
+import getWebstoriesAction from './src/redux/actions/getWebstoriesAction';
 
 const App = () => {
   useEffect(() => {
@@ -71,6 +72,7 @@ const App = () => {
     store.dispatch(getNizamabadAction());
     store.dispatch(getRangareddyAction());
     store.dispatch(getWarangalAction());
+    store.dispatch(getWebstoriesAction);
     //hides the splash screen on app load.
   }, []);
 

@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Linking } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeStackNavigator from '../navigation/stack-navigators/HomeStackNavigator';
 import BottomTabNavigator from '../navigation/BottomTabNavigator';
@@ -36,15 +36,19 @@ const DrawerNavigator = (navigation) => {
         options={({ navigation }) => ({
           headerStyle: { backgroundColor: appThemeColor },
           headerRight: () => (
+            <TouchableOpacity onPress={() => {
+              Linking.openURL('https://youtube.com/@Namasthetelangaana');
+          }}
+>
             <View style={HeaderStyle.HeadRightView}>
-              <TouchableOpacity
-              >
+             
                 <Image
                   style={HeaderStyle.HeadRightImg}
-                  source={require('../Assets/Images/bell.png')}
+                  source={require('../Assets/Images/videoicon.png')}
                 />
-              </TouchableOpacity>
+             
             </View>
+            </TouchableOpacity>
           ),
           headerLeft: () => (
             <View style={HeaderStyle.headerLeftView}>
@@ -82,7 +86,7 @@ const DrawerNavigator = (navigation) => {
                 >
                 <Image
                   style={HeaderStyle.HeadRightImg}
-                  source={require('../Assets/Images/bell.png')}
+                  source={require('../Assets/Images/videoicon.png')}
                 />
               </TouchableOpacity>
             </View>
@@ -121,7 +125,7 @@ const DrawerNavigator = (navigation) => {
                 >
                 <Image
                   style={HeaderStyle.HeadRightImg}
-                  source={require('../Assets/Images/bell.png')}
+                  source={require('../Assets/Images/videoicon.png')}
                 />
               </TouchableOpacity>
             </View>
@@ -160,7 +164,7 @@ const DrawerNavigator = (navigation) => {
                 >
                 <Image
                   style={HeaderStyle.HeadRightImg}
-                  source={require('../Assets/Images/bell.png')}
+                  source={require('../Assets/Images/videoicon.png')}
                 />
               </TouchableOpacity>
             </View>
@@ -199,7 +203,7 @@ const DrawerNavigator = (navigation) => {
                 >
                 <Image
                   style={HeaderStyle.HeadRightImg}
-                  source={require('../Assets/Images/bell.png')}
+                  source={require('../Assets/Images/videoicon.png')}
                 />
               </TouchableOpacity>
             </View>
